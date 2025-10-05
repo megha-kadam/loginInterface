@@ -10,7 +10,7 @@ const routes: Routes = [
     component : AuthComponent,
   },
   {
-    path : 'userDetail',
+    path : ':id',
     component : UserDetailComponent,
     title : 'User Detail',
     //canActivate : [AuthGuard]

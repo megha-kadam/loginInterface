@@ -131,19 +131,27 @@
                     </strong>
                 </div>
 
-                <div class="form-group">
+                <div class="form-group passwordIcon">
                     <label for="password">Old Password <sub class="text-danger">*</sub></label>
-                    <input type="text" formControlName="password" id="password" class="form-control">
+                    <input  [type]="showHide ? 'password' : 'text'" placeholder="Enter your current password" formControlName="password" id="password" class="form-control">
+
+                    <button mat-icon-button matSuffix type="button" class="eyeIcon" (click)="showHide = !showHide">
+                        <mat-icon>{{ showHide ? 'visibility_off' : 'visibility' }}</mat-icon>
+                    </button>
 
                     <strong class="text-danger"
                         *ngIf="f['password'].touched && f['password'].hasError('required')">
                         Old Password is required field!
                     </strong>
                 </div>
-
-                <div class="form-group">
+ 
+                <div class="form-group passwordIcon">
                     <label for="newPassword">New Password <sub class="text-danger">*</sub></label>
-                    <input type="text" formControlName="newPassword" id="newPassword" class="form-control">
+                    <input  [type]="showHide ? 'password' : 'text'" placeholder="Enter your new password" formControlName="newPassword" id="newPassword" class="form-control">
+
+                    <button mat-icon-button matSuffix type="button" class="eyeIcon" (click)="showHide = !showHide">
+                        <mat-icon>{{ showHide ? 'visibility_off' : 'visibility' }}</mat-icon>
+                    </button>
 
                     <strong class="text-danger"
                         *ngIf="f['newPassword'].touched && f['newPassword'].hasError('required')">
@@ -151,9 +159,13 @@
                     </strong>
                 </div>
 
-                <div class="form-group">
+                <div class="form-group passwordIcon">
                     <label for="confirmPassword">Confirm Password <sub class="text-danger">*</sub></label>
-                    <input type="text" formControlName="confirmPassword" id="confirmPassword" class="form-control">
+                    <input  [type]="showHide ? 'password' : 'text'" placeholder="Confirm your new password" formControlName="confirmPassword" id="confirmPassword" class="form-control">
+
+                    <button mat-icon-button matSuffix type="button" class="eyeIcon" (click)="showHide = !showHide">
+                        <mat-icon>{{ showHide ? 'visibility_off' : 'visibility' }}</mat-icon>
+                    </button>
 
                     <strong class="text-danger"
                         *ngIf="f['confirmPassword'].touched && f['confirmPassword'].hasError('required')">
@@ -161,7 +173,7 @@
                     </strong>
                 </div>
 
-                <button mat-raised-button color="primary" class="btn-block saveBtn">save</button>
+                <button mat-raised-button class="btn-block saveBtn">save</button>
             </form>
         </mat-card>
     </div>

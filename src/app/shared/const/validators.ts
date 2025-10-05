@@ -1,7 +1,7 @@
 export class CustomRegex {
-    static password = '^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[$@$!%*?&])[A-Za-z\d$@$!%*?&].{7,}$';
+    static password = '/^[0-9]*$/';
     static onlyText = '[a-zA-Z]*';
-    // static onlyNums = '[0-9]\d{3}*';
+    static onlyNums = '[0-9]\d{3}*';
     static username = '^[a-zA-Z ]*$';
     static email = '^[a-zA-Z0-9.-]+@[a-zA-Z0-9-.]+\\.[a-zA-Z]{2,100}$';
     static updateEmail =

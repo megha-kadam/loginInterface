@@ -15,6 +15,7 @@ import { Idata, IlogRes } from '../../models/auth';
 export class AuthComponent implements OnInit {
   allreadyHasAccount : boolean = true;
   userInfo !: Idata;
+  showHide : boolean = true;
 
   logInForm !: FormGroup;
   signUpForm !: FormGroup;
@@ -43,7 +44,7 @@ export class AuthComponent implements OnInit {
   createSignupForm(){
     this.signUpForm = new FormGroup({
       email : new FormControl(null, [Validators.required, Validators.pattern(CustomRegex.email)]),
-      password : new FormControl(null, [Validators.required, Validators.pattern(CustomRegex.password)])
+      password : new FormControl(null, [Validators.required])
     })
   }
 
@@ -55,14 +56,12 @@ export class AuthComponent implements OnInit {
    
      .subscribe({
       next : (res : IlogRes | any) => {
-        console.log(res);
         this.userInfo = res.data;
-        console.log(this.userInfo);
-        
+       
         this.authService.userEmitter(this.userInfo);
         this.logInForm.reset();
         this.snackbar.openSnackbar(res.message);
-        this.router.navigate(['userDetail']);
+        this.router.navigate([`${this.userInfo.id}`]);
 
       },
       error : err => {
@@ -76,9 +75,8 @@ export class AuthComponent implements OnInit {
    if(this.signUpForm.valid){
      let val = this.signUpForm.value;
     console.log(val);
-    // this.authService.signUp(val);
-    // this.signUpForm.reset();
-    // this.authService.logInEmitter(true);
+    this.signUpForm.reset();
+    this.authService.logInEmitter(true);
    }
     
   }

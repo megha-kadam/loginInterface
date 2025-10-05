@@ -13,6 +13,7 @@ import { Route, Router } from '@angular/router';
 export class UserDetailComponent implements OnInit {
   userForm !: FormGroup;
   userInfo !: Idata | null;
+  showHide : boolean = true;
 
   constructor(private authservice : AuthService,
           private snackbar : SnackbarService,
@@ -50,7 +51,7 @@ export class UserDetailComponent implements OnInit {
         this.userForm.controls['lastName'].patchValue(this.userInfo?.lastName);
         this.userForm.controls['email'].patchValue(this.userInfo?.email);
         this.userForm.controls['phone'].patchValue(this.userInfo?.phone);
-        this.userForm.controls['password'].patchValue(this.userInfo?.password)
+    
         console.log(this.userInfo);
       },
       error : err => this.snackbar.openSnackbar(err)

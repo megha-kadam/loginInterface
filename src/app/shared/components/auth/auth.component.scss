@@ -1,4 +1,4 @@
-.main{
+.main {
     position: fixed;
     left: 0;
     top: 0;
@@ -12,21 +12,39 @@
     background-repeat: no-repeat;
     background-size: cover;
     background-attachment: fixed;
-   background-position: center;
+    background-position: center;
 
-    .card{
-    width: 600px;
-    max-width: 90%;
+    .card {
+        width: 600px;
+        max-width: 90%;
 
-    .loginHead{
-        text-transform: uppercase;
+        .loginHead {
+            text-transform: uppercase;
+        }
+
+        h2 {
+            margin-top: 10px;
+            text-align: center;
+        }
     }
 
-    h2{
-        margin-top: 10px;
-        text-align: center;
+}
+
+.passwordIcon {
+    position: relative;
+
+    input {
+        width: 100%;
+        padding-right: 30px;
+    }
+
+    .eyeIcon {
+        position: absolute;
+        right: 10px;
+        top: 35%;
+        transform: translateY(-50%);
+        color: gray;
+        cursor: pointer;
+        font-size: 18px;
     }
 }
-
-}
-

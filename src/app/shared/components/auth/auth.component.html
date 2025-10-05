@@ -15,9 +15,14 @@
                         Please enter a valid email address!
                     </strong>
                 </div>
-                <div class="form-group">
-                    <input type="text" id="password" placeholder="Password" formControlName="password"
+                <div class="form-group passwordIcon">
+                    <input id="password" [type]="showHide ? 'password' : 'text'" placeholder="Password" formControlName="password"
                         class="form-control">
+
+                         <button mat-icon-button matSuffix class="eyeIcon" type="button" (click)="showHide = !showHide">
+                        <mat-icon>{{ showHide ? 'visibility_off' : 'visibility' }}</mat-icon>
+                    </button>
+
                     <p class="text-right font-weight-500px">Forget password</p>
 
                     <strong class="text-danger" *ngIf="l['password'].touched && l['password'].hasError('required')">
@@ -25,7 +30,7 @@
                     </strong>
 
                     <!-- <strong class="text-danger" *ngIf="l['password'].dirty && l['password'].hasError('pattern')">
-                       Password must includes letter, number, special characters!
+                       Password must includes numbers only!
                     </strong> -->
                 </div>
                 <button mat-raised-button class="btn-block" color="primary">Log In</button>
@@ -50,16 +55,21 @@
                         Please enter a valid email address!
                     </strong>
                 </div>
-                <div class="form-group">
-                    <input type="text" id="password" placeholder="Password" formControlName="password"
-                        class="form-control">
+                <div class="form-group passwordIcon">
+                    <input id="password" [type]="showHide ? 'password' : 'text'" placeholder="Password"
+                        formControlName="password" class="form-control">
+
+                    <button mat-icon-button matSuffix type="button" class="eyeIcon" (click)="showHide = !showHide">
+                        <mat-icon>{{ showHide ? 'visibility_off' : 'visibility' }}</mat-icon>
+                    </button>
+
                     <strong class="text-danger" *ngIf="s['password'].touched && s['password'].hasError('required')">
                         Password is required field.
                     </strong>
 
-                    <strong class="text-danger" *ngIf="s['password'].dirty && s['password'].hasError('pattern')">
+                    <!-- <strong class="text-danger" *ngIf="s['password'].dirty && s['password'].hasError('pattern')">
                         Password must includes letter, number, special characters!
-                    </strong>
+                    </strong> -->
                 </div>
                 <button mat-raised-button class="btn-block" color="primary">Sign Up</button>
             </form>

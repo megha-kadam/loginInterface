@@ -29,10 +29,10 @@ export class AuthService {
     return this.http.post(loginURL, userDetail)
   }
 
-  // signUp(userDetail : Isignup){
-  //   let signupURL : string = `${this.baseURL}`;
-  //   return this.http.post(signupURL, userDetail)
-  // }
+  signUp(userDetail : Isignup){
+    let signupURL : string = `${this.baseURL}`;
+    return this.http.post(signupURL, userDetail)
+  }
 
   
     saveToken(token : string){
@@ -46,10 +46,3 @@ export class AuthService {
 }
 
 
- // saveUserrole(userRole : string){
-    //     localStorage.setItem('userRole', userRole);
-    // }
-
-    // getUserRole(){
-    //     return localStorage.getItem('userRole');
-    // }
