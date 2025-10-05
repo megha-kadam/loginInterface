@@ -1,0 +1,73 @@
+<main class="main">
+    <mat-card *ngIf="allreadyHasAccount" class="card">
+        <h2 class="loginHead">enter your email to continue</h2>
+
+        <div class="card-body">
+            <form [formGroup]="logInForm" (ngSubmit)="onLogIn()">
+                <div class="form-group">
+                    <input type="text" id="email" placeholder="Email" formControlName="email" class="form-control">
+
+                    <strong class="text-danger" *ngIf="l['email'].touched && l['email'].hasError('required')">
+                        Email is required field.
+                    </strong>
+
+                    <strong class="text-danger" *ngIf="l['email'].dirty && l['email'].hasError('pattern')">
+                        Please enter a valid email address!
+                    </strong>
+                </div>
+                <div class="form-group">
+                    <input type="text" id="password" placeholder="Password" formControlName="password"
+                        class="form-control">
+                    <p class="text-right font-weight-500px">Forget password</p>
+
+                    <strong class="text-danger" *ngIf="l['password'].touched && l['password'].hasError('required')">
+                        Password is required field.
+                    </strong>
+
+                    <!-- <strong class="text-danger" *ngIf="l['password'].dirty && l['password'].hasError('pattern')">
+                       Password must includes letter, number, special characters!
+                    </strong> -->
+                </div>
+                <button mat-raised-button class="btn-block" color="primary">Log In</button>
+            </form>
+
+            <a href="javascript:;" (click)="allreadyHasAccount = false">Don't have account</a>
+        </div>
+    </mat-card>
+
+    <mat-card class="card" *ngIf="!allreadyHasAccount">
+
+        <h2>Sign Up</h2>
+        <div class="card-body">
+            <form [formGroup]="signUpForm" (ngSubmit)="onSignUp()">
+                <div class="form-group">
+                    <input type="text" id="email" placeholder="Email" formControlName="email" class="form-control">
+                    <strong class="text-danger" *ngIf="s['email'].touched && s['email'].hasError('required')">
+                        Email is required field.
+                    </strong>
+
+                    <strong class="text-danger" *ngIf="s['email'].dirty && s['email'].hasError('pattern')">
+                        Please enter a valid email address!
+                    </strong>
+                </div>
+                <div class="form-group">
+                    <input type="text" id="password" placeholder="Password" formControlName="password"
+                        class="form-control">
+                    <strong class="text-danger" *ngIf="s['password'].touched && s['password'].hasError('required')">
+                        Password is required field.
+                    </strong>
+
+                    <strong class="text-danger" *ngIf="s['password'].dirty && s['password'].hasError('pattern')">
+                        Password must includes letter, number, special characters!
+                    </strong>
+                </div>
+                <button mat-raised-button class="btn-block" color="primary">Sign Up</button>
+            </form>
+            <a href="javascript:;" (click)="allreadyHasAccount = true">Already have account</a> <span> Create
+                Account</span>
+        </div>
+    </mat-card>
+
+
+
+</main>

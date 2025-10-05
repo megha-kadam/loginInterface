@@ -3,7 +3,8 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false
+  production: false,
+  url : 'https://dev-api.wanasti.com/api/v1/user/login?lang=en%C2%A4cyCode=KW'
 };
 
 /*

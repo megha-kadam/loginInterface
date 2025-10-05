@@ -1,0 +1,168 @@
+<div class="row">
+    <div class="col-12 text-center mb-3 ">
+        <div class="header">
+            <h1 class="text-uppercase m-0">my account</h1>
+            <p class="text-capitalize">manage your fun : view tickets, book zones and track your adventure!</p>
+
+            <mat-card class="info">
+                <div class="row">
+                    <div class="col-2">
+                        <div class="example-button-container">
+                            <button mat-fab disabled aria-label="Example icon button with a heart icon" color="basic"
+                                class="contactIcon">
+                                <mat-icon>
+                                    account_circle
+                                </mat-icon>
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="col-10 text-left">
+                            <h2 class="m-0">
+                            {{userInfo?.firstName }}
+                        </h2>
+                        <p class="m-0">
+                            {{userInfo?.lastName}}
+                        </p>
+                        <p class="m-0">
+                            {{userInfo?.email}}
+                        </p>
+                    </div>
+                </div>
+            </mat-card>
+        </div>
+
+
+    </div>
+</div>
+
+<div class="row mt-5">
+    <div class="col-4">
+        <mat-card>
+            <mat-list role="list">
+                <mat-list-item role="listitem" class="edit">
+                    <button mat-icon-button color="primary" aria-label="Example icon button with a home icon">
+                        <mat-icon>account_circle</mat-icon>
+                    </button>
+                    Edit Profile</mat-list-item>
+                <mat-list-item role="listitem">
+                    <button mat-icon-button color="primary" aria-label="Example icon button with a home icon">
+                        <mat-icon>help</mat-icon>
+                    </button>
+                    FAQs</mat-list-item>
+                <mat-list-item role="listitem">
+                    <button mat-icon-button color="primary" aria-label="Example icon button with a home icon">
+                        <mat-icon>delete</mat-icon>
+                    </button>
+                    Delete Account</mat-list-item>
+                <mat-list-item role="listitem">
+                    <button mat-icon-button color="primary" aria-label="Example icon button with a home icon">
+                        <mat-icon>mail</mat-icon>
+                    </button>
+                    Contact Us</mat-list-item>
+                <mat-list-item role="listitem" class="text-danger" (click)="onLogOut()">
+                    <button mat-icon-button color="warn" aria-label="Example icon button with a home icon">
+                        <mat-icon>logout</mat-icon>
+                    </button>
+                    Log Out</mat-list-item>
+            </mat-list>
+        </mat-card>
+
+    </div>
+    <div class="col-8">
+        <mat-card>
+            <h1 class="text-uppercase font-weight-bold">Personal Information</h1>
+
+            <div class="row mb-3">
+                <div class="col-2">
+                    <div class="example-button-container">
+                        <button mat-fab disabled aria-label="Example icon button with a heart icon" color="basic"
+                            class="contactIcon">
+                            <mat-icon>
+                                account_circle
+                            </mat-icon>
+                        </button>
+                    </div>
+                </div>
+                <div class="col-10">
+                    <h2 class="m-0">
+                        {{userInfo?.firstName}}
+                    </h2>
+                    <p class="m-0">
+                        {{userInfo?.email}}
+                    </p>
+                </div>
+            </div>
+
+            <form [formGroup]="userForm" class="userForm">
+                <div class="form-group">
+                    <label for="firstName">First Name <sub class="text-danger">*</sub></label>
+                    <input type="text" formControlName="firstName" id="firstName" class="form-control">
+
+                    <strong class="text-danger" *ngIf="f['firstName'].touched && f['firstName'].hasError('required')">
+                        First Name is required field!
+                    </strong>
+                </div>
+
+                <div class="form-group">
+                    <label for="lastName">Last Name <sub class="text-danger">*</sub></label>
+                    <input type="text" formControlName="lastName" id="lastName" class="form-control">
+
+                    <strong class="text-danger" *ngIf="f['lastName'].touched && f['lastName'].hasError('required')">
+                        Last Name is required field!
+                    </strong>
+                </div>
+
+                <div class="form-group">
+                    <label for="email">Email <sub class="text-danger">*</sub></label>
+                    <input type="text" formControlName="email" id="email" class="form-control">
+
+                    <strong class="text-danger" *ngIf="f['email'].touched && f['email'].hasError('required')">
+                        Email is required field!
+                    </strong>
+                </div>
+
+                <div class="form-group">
+                    <label for="phone">Phone Number <sub class="text-danger">*</sub></label>
+                    <input type="text" formControlName="phone" id="phone" class="form-control">
+
+                    <strong class="text-danger" *ngIf="f['phone'].touched && f['phone'].hasError('required')">
+                        Phone Number is required field!
+                    </strong>
+                </div>
+
+                <div class="form-group">
+                    <label for="password">Old Password <sub class="text-danger">*</sub></label>
+                    <input type="text" formControlName="password" id="password" class="form-control">
+
+                    <strong class="text-danger"
+                        *ngIf="f['password'].touched && f['password'].hasError('required')">
+                        Old Password is required field!
+                    </strong>
+                </div>
+
+                <div class="form-group">
+                    <label for="newPassword">New Password <sub class="text-danger">*</sub></label>
+                    <input type="text" formControlName="newPassword" id="newPassword" class="form-control">
+
+                    <strong class="text-danger"
+                        *ngIf="f['newPassword'].touched && f['newPassword'].hasError('required')">
+                        New Password is required field!
+                    </strong>
+                </div>
+
+                <div class="form-group">
+                    <label for="confirmPassword">Confirm Password <sub class="text-danger">*</sub></label>
+                    <input type="text" formControlName="confirmPassword" id="confirmPassword" class="form-control">
+
+                    <strong class="text-danger"
+                        *ngIf="f['confirmPassword'].touched && f['confirmPassword'].hasError('required')">
+                        Confirm Password is required field!
+                    </strong>
+                </div>
+
+                <button mat-raised-button color="primary" class="btn-block saveBtn">save</button>
+            </form>
+        </mat-card>
+    </div>
+</div>
