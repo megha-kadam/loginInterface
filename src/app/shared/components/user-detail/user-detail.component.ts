@@ -13,7 +13,10 @@ import { Route, Router } from '@angular/router';
 export class UserDetailComponent implements OnInit {
   userForm !: FormGroup;
   userInfo !: Idata | null;
-  showHide : boolean = true;
+  showOldPassword : boolean = true;
+  showNewPassword : boolean = false;
+  showConfirmPassword : boolean = false;
+  
 
   constructor(private authservice : AuthService,
           private snackbar : SnackbarService,

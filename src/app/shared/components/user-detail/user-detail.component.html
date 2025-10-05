@@ -1,12 +1,15 @@
 <div class="row">
     <div class="col-sm-12 text-center mb-3 ">
         <div class="header">
-            <h1 class="text-uppercase m-0">my account</h1>
-            <p class="text-capitalize">manage your fun : view tickets, book zones and track your adventure!</p>
+            <div class="heading mb-5">
+                <h1 class="text-uppercase m-0">my account</h1>
+            <p class="text-capitalize m-0">manage your fun : view tickets, book zones and track</p>
+            <p class="text-center"> your adventure!</p>
+            </div>
 
-            <mat-card class="info">
+            <mat-card class="info mt-5">
                 <div class="row">
-                    <div class="col-sm-12 col-md-2 ">
+                    <div class="col-sm-12 col-md-2 col-lg-2">
                         <div class="example-button-container">
                             <button mat-fab disabled aria-label="Example icon button with a heart icon" color="basic"
                                 class="contactIcon">
@@ -17,14 +20,14 @@
                         </div>
                     </div>
 
-                    <div class="col-sm-12 col-md-8 intro">
-                            <h2 class="m-0">
+                    <div class="col-sm-12 col-md-8 col-lg-8">
+                            <h2 class="m-0 intro text-left">
                             {{userInfo?.firstName }}
                         </h2>
-                        <p class="m-0">
+                        <p class="m-0 intro text-left">
                             {{userInfo?.lastName}}
                         </p>
-                        <p class="m-0">
+                        <p class="m-0 intro text-left">
                             {{userInfo?.email}}
                         </p>
                     </div>
@@ -37,7 +40,7 @@
 </div>
 
 <div class="row mt-5">
-    <div class="col-sm-4 ">
+    <div class="col-sm-12 col-md-12 col-lg-4">
         <mat-card>
             <mat-list role="list">
                 <mat-list-item role="listitem" class="edit">
@@ -69,7 +72,7 @@
         </mat-card>
 
     </div>
-    <div class="col-sm-8">
+    <div class="col-sm-12 col-md-12 col-lg-8">
         <mat-card>
             <h1 class="text-uppercase font-weight-bold">Personal Information</h1>
 
@@ -133,10 +136,10 @@
 
                 <div class="form-group passwordIcon">
                     <label for="password">Old Password <sub class="text-danger">*</sub></label>
-                    <input  [type]="showHide ? 'password' : 'text'" placeholder="Enter your current password" formControlName="password" id="password" class="form-control">
+                    <input  [type]="showOldPassword ? 'password' : 'text'" placeholder="Enter your current password" formControlName="password" id="password" class="form-control">
 
-                    <button mat-icon-button matSuffix type="button" class="eyeIcon" (click)="showHide = !showHide">
-                        <mat-icon>{{ showHide ? 'visibility_off' : 'visibility' }}</mat-icon>
+                    <button mat-icon-button matSuffix type="button" class="eyeIcon" (click)="showOldPassword = !showOldPassword">
+                        <mat-icon>{{ showOldPassword ? 'visibility_off' : 'visibility' }}</mat-icon>
                     </button>
 
                     <strong class="text-danger"
@@ -147,10 +150,10 @@
  
                 <div class="form-group passwordIcon">
                     <label for="newPassword">New Password <sub class="text-danger">*</sub></label>
-                    <input  [type]="showHide ? 'password' : 'text'" placeholder="Enter your new password" formControlName="newPassword" id="newPassword" class="form-control">
+                    <input  [type]="showNewPassword ? 'password' : 'text'" placeholder="Enter your new password" formControlName="newPassword" id="newPassword" class="form-control">
 
-                    <button mat-icon-button matSuffix type="button" class="eyeIcon" (click)="showHide = !showHide">
-                        <mat-icon>{{ showHide ? 'visibility_off' : 'visibility' }}</mat-icon>
+                    <button mat-icon-button matSuffix type="button" class="eyeIcon" (click)="showNewPassword = !showNewPassword">
+                        <mat-icon>{{ showNewPassword ? 'visibility_off' : 'visibility' }}</mat-icon>
                     </button>
 
                     <strong class="text-danger"
@@ -161,10 +164,10 @@
 
                 <div class="form-group passwordIcon">
                     <label for="confirmPassword">Confirm Password <sub class="text-danger">*</sub></label>
-                    <input  [type]="showHide ? 'password' : 'text'" placeholder="Confirm your new password" formControlName="confirmPassword" id="confirmPassword" class="form-control">
+                    <input  [type]="showConfirmPassword ? 'password' : 'text'" placeholder="Confirm your new password" formControlName="confirmPassword" id="confirmPassword" class="form-control">
 
-                    <button mat-icon-button matSuffix type="button" class="eyeIcon" (click)="showHide = !showHide">
-                        <mat-icon>{{ showHide ? 'visibility_off' : 'visibility' }}</mat-icon>
+                    <button mat-icon-button matSuffix type="button" class="eyeIcon" (click)="showConfirmPassword = !showConfirmPassword">
+                        <mat-icon>{{ showConfirmPassword ? 'visibility_off' : 'visibility' }}</mat-icon>
                     </button>
 
                     <strong class="text-danger"
