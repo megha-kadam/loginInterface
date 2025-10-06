@@ -1,4 +1,5 @@
-<div class="row">
+<div class="main">
+    <div class="row">
     <div class="col-sm-12 text-center mb-3 ">
         <div class="header">
             <div class="heading mb-5">
@@ -25,7 +26,7 @@
                             {{userInfo?.firstName }}
                         </h2>
                         <p class="m-0 intro text-left">
-                            {{userInfo?.lastName}}
+                            {{userInfo?.phone}}
                         </p>
                         <p class="m-0 intro text-left">
                             {{userInfo?.email}}
@@ -123,27 +124,44 @@
                     <strong class="text-danger" *ngIf="f['email'].touched && f['email'].hasError('required')">
                         Email is required field!
                     </strong>
+
+                      <strong class="text-danger" *ngIf="f['email'].dirty && f['email'].hasError('pattern')">
+                           Please enter a valid email address!
+                    </strong>
                 </div>
 
                 <div class="form-group">
-                    <label for="phone">Phone Number <sub class="text-danger">*</sub></label>
+                     <label for="phone">Phone Number <sub class="text-danger">*</sub></label>
+                  <div class="numCode">
+                     <div class="phonecode">
+                     <select class="form-control" formControlName="phoneCode">
+                        <option *ngFor="let code of countryData" [value]="code">
+                            {{code?.dial_code}}
+                        </option>
+                    </select>
+                   </div>
+                   <div class="phoneNum">
                     <input type="text" formControlName="phone" id="phone" class="form-control">
 
                     <strong class="text-danger" *ngIf="f['phone'].touched && f['phone'].hasError('required')">
                         Phone Number is required field!
                     </strong>
+                   </div>
+
+                  </div>
+
                 </div>
 
                 <div class="form-group passwordIcon">
-                    <label for="password">Old Password <sub class="text-danger">*</sub></label>
-                    <input  [type]="showOldPassword ? 'password' : 'text'" placeholder="Enter your current password" formControlName="password" id="password" class="form-control">
+                    <label for="password">Old Password <sub class="text-danger">*</sub></label>  
+                    <input  [type]="showOldPassword ? 'password' : 'text'" placeholder="Enter your current password" formControlName="oldpassword" id="password" class="form-control">
 
                     <button mat-icon-button matSuffix type="button" class="eyeIcon" (click)="showOldPassword = !showOldPassword">
                         <mat-icon>{{ showOldPassword ? 'visibility_off' : 'visibility' }}</mat-icon>
                     </button>
 
                     <strong class="text-danger"
-                        *ngIf="f['password'].touched && f['password'].hasError('required')">
+                        *ngIf="f['oldpassword'].touched && f['oldpassword'].hasError('required')">
                         Old Password is required field!
                     </strong>
                 </div>
@@ -180,4 +198,5 @@
             </form>
         </mat-card>
     </div>
+</div>
 </div>

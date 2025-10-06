@@ -23,20 +23,16 @@
                         <mat-icon>{{ showHide ? 'visibility_off' : 'visibility' }}</mat-icon>
                     </button>
 
-                    <p class="text-right font-weight-500px">Forget password</p>
+                 
 
                     <strong class="text-danger" *ngIf="l['password'].touched && l['password'].hasError('required')">
                         Password is required field.
                     </strong>
-
-                    <!-- <strong class="text-danger" *ngIf="l['password'].dirty && l['password'].hasError('pattern')">
-                       Password must includes numbers only!
-                    </strong> -->
                 </div>
-                <button mat-raised-button class="btn-block" color="primary">Log In</button>
+                <button mat-raised-button class="btn-block color-pri">Log In</button>
             </form>
 
-            <a href="javascript:;" (click)="allreadyHasAccount = false">Don't have account</a>
+            <a href="javascript:;" (click)="allreadyHasAccount = false" class="msg">Don't have account</a>
         </div>
     </mat-card>
 
@@ -67,14 +63,12 @@
                         Password is required field.
                     </strong>
 
-                    <!-- <strong class="text-danger" *ngIf="s['password'].dirty && s['password'].hasError('pattern')">
-                        Password must includes letter, number, special characters!
-                    </strong> -->
+                  
                 </div>
-                <button mat-raised-button class="btn-block" color="primary">Sign Up</button>
+                <button mat-raised-button class="btn-block color-pri">Sign Up</button>
             </form>
-            <a href="javascript:;" (click)="allreadyHasAccount = true">Already have account</a> <span> Create
-                Account</span>
+            <a href="javascript:;" (click)="allreadyHasAccount = true" class="msg">Already have account</a>
+                
         </div>
     </mat-card>
 

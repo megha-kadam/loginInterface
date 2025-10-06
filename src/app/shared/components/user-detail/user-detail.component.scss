@@ -1,8 +1,7 @@
 
-
 .header{
     height: 300px;
-    background-color: rgb(134, 169, 134);
+    background-color: var(--color-primary);
     border-radius: 7px;
     position: relative;
     display: flex;
@@ -21,7 +20,7 @@
 }
 
 .edit{
-    color : rgb(134, 169, 134);
+    color : var(--color-primary);
 }
 
 
@@ -37,8 +36,12 @@
         flex-direction: column;
 }
 
+.numCode{
+    display: flex;
+}
+
 .saveBtn{
-    background-color: rgb(134, 169, 134);
+    background-color: var(--color-primary);
 
 }
 }
@@ -56,7 +59,7 @@
         right: 10px;
         top: 65%;
         transform: translateY(-50%);
-        color: gray;
+        color: var(--color-gray);
         cursor: pointer;
         font-size: 18px;
     }

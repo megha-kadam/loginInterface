@@ -51,7 +51,6 @@ export class AuthComponent implements OnInit {
   onLogIn(){
     if(this.logInForm.valid){
       let val = this.logInForm.value;
-      console.log(val);
      this.authService.logIn(val)
    
      .subscribe({

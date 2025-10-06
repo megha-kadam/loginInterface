@@ -43,3 +43,10 @@ export interface IlogRes{
    message : string;
 
 }
+
+
+export interface Iphonecode {
+  name : string
+  dial_code : string
+  code : string
+}

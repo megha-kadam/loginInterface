@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment';
-import { Idata, IlogIn, IlogRes, Isignup } from '../models/auth';
+import { Idata, IlogIn, IlogRes, Iphonecode, Isignup } from '../models/auth';
 import { BehaviorSubject, Observable, Subject } from 'rxjs';
 
 @Injectable({
@@ -11,13 +11,13 @@ export class AuthService {
   userLogInStatus : boolean = false;
   baseURL : string = environment.url;
 
-  logInSub : Subject<boolean> = new Subject<boolean>();
+ private logInSub : Subject<boolean> = new Subject<boolean>();
   logInObs$ : Observable<boolean> = this.logInSub.asObservable();
   logInEmitter(flag : boolean){
     this.logInSub.next(flag);
   }
-    userSub : Subject<Idata | null> = new BehaviorSubject<Idata | null>(null);
-  userObs$ : Observable<Idata | null> = this.userSub.asObservable();
+   private userSub : Subject<Idata | null> = new BehaviorSubject<Idata | null>(null);
+   userObs$ : Observable<Idata | null> = this.userSub.asObservable();
   userEmitter(user : Idata){
     this.userSub.next(user);
   }
@@ -43,6 +43,11 @@ export class AuthService {
         return !!localStorage.getItem('token')
     }
 
+
+    phoneCode(){
+      let url = environment.phoneCodeURL;
+      return this.http.get(url)
+    }
 }
 
 

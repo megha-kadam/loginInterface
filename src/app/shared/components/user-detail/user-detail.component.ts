@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { Idata, IlogRes } from '../../models/auth';
+import { Idata, IlogRes, Iphonecode } from '../../models/auth';
 import { AuthService } from '../../services/auth.service';
 import { SnackbarService } from '../../services/snackbar.service';
 import { Route, Router } from '@angular/router';
+import { CustomRegex } from '../../const/validators';
 
 @Component({
   selector: 'app-user-detail',
@@ -16,6 +17,7 @@ export class UserDetailComponent implements OnInit {
   showOldPassword : boolean = true;
   showNewPassword : boolean = false;
   showConfirmPassword : boolean = false;
+  countryData !: Iphonecode[];
   
 
   constructor(private authservice : AuthService,
@@ -27,9 +29,10 @@ export class UserDetailComponent implements OnInit {
     this.userForm = new FormGroup({
       firstName : new FormControl(null, Validators.required),
       lastName : new FormControl(null, Validators.required),
-      email : new FormControl(null, Validators.required),
+      email : new FormControl(null, [Validators.required, Validators.pattern(CustomRegex.email)]),
       phone : new FormControl(null, Validators.required),
-      password : new FormControl(null, Validators.required),
+      phoneCode : new FormControl(null, Validators.required),
+      oldpassword : new FormControl(null, Validators.required),
       newPassword : new FormControl(null, Validators.required),
       confirmPassword : new FormControl(null, Validators.required),
     })
@@ -47,15 +50,9 @@ export class UserDetailComponent implements OnInit {
   userDetail(){
     this.authservice.userObs$
     .subscribe({
-      next : (res : Idata | null) => {
-        console.log(res);
+      next : (res : Idata| null) => {
         this.userInfo = res;
-        this.userForm.controls['firstName'].patchValue(this.userInfo?.firstName);
-        this.userForm.controls['lastName'].patchValue(this.userInfo?.lastName);
-        this.userForm.controls['email'].patchValue(this.userInfo?.email);
-        this.userForm.controls['phone'].patchValue(this.userInfo?.phone);
-    
-        console.log(this.userInfo);
+        this.userForm.patchValue(this.userInfo!)
       },
       error : err => this.snackbar.openSnackbar(err)
     })
@@ -66,8 +63,19 @@ export class UserDetailComponent implements OnInit {
   ngOnInit(): void {
     this.createUserForm();
     this.userDetail();
+    this.getPhoneCode();
   }
 
-
+  getPhoneCode(){
+    this.authservice.phoneCode()
+    .subscribe({
+      next : (data : Iphonecode | any) => {
+        this.countryData = data;
+      },
+      error : err => {
+        this.snackbar.openSnackbar(err.message);
+      }
+    })
+  }
 
 }
