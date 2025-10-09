@@ -135,7 +135,7 @@
                   <div class="numCode">
                      <div class="phonecode">
                      <select class="form-control" formControlName="phoneCode">
-                        <option *ngFor="let code of countryData" [value]="code">
+                        <option *ngFor="let code of countryData" [value]="code?.dial_code">
                             {{code?.dial_code}}
                         </option>
                     </select>
